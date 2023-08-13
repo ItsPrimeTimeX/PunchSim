@@ -1,0 +1,152 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Punching Simulator👊 -PRIME TIME",
+    LoadingTitle = "PRIME TIME",
+    LoadingSubtitle = "Created By: Prime Time",
+    ConfigurationSaving = {
+       Enabled = false,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "PrimeTime"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Untitled",
+       Subtitle = "Key System",
+       Note = "No method of obtaining the key is provided",
+       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+    }
+ })
+
+ local MainTab = Window:CreateTab("Home🏠", nil) -- Title, Image
+ local MainSection = MainTab:CreateSection("Eggs")
+
+ Rayfield:Notify({
+    Title = "PRIME TIME",
+    Content = "Have Fun",
+    Duration = 3,
+    Image = nil,
+    Actions = { -- Notification Buttons
+       Ignore = {
+          Name = "Okay!",
+          Callback = function()
+          print("The user tapped Okay!")
+       end
+    },
+ },
+ })
+
+ local isRunning = false -- Variable to track the loop state
+
+ local Toggle = MainTab:CreateToggle({
+    Name = "Forest Egg 1",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        isRunning = Value -- Update the loop state based on the toggle value
+
+        if isRunning then
+            while isRunning do
+                local args = {[1] = "1"}
+                game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+                wait()
+            end
+        end
+    end,
+})
+
+
+ local Toggle = MainTab:CreateToggle({
+     Name = "Forest Egg 2",
+     CurrentValue = false,
+     Flag = "Toggle2",
+     Callback = function(Value)
+         isRunning = Value -- Update the loop state based on the toggle value
+ 
+         if isRunning then
+             while isRunning do
+                 local args = {[1] = "Forest2"}
+                 game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+                 wait()
+             end
+         end
+     end,
+ })
+
+ local TpTab = Window:CreateTab("Teleports🛬", nil) -- Title, Image
+ local TpSection = TpTab:CreateSection("Teleports")
+
+ local Button = TpTab:CreateButton({
+    Name = "Forest",
+    Callback = function()
+        local args = {[1] = "Teleport",[2] = 1}
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+    end,
+    })
+
+    local Button = TpTab:CreateButton({
+        Name = "Desert",
+        Callback = function()
+            local args = {[1] = "Teleport",[2] = 2}
+            game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+        end,
+        })
+
+        local Button = TpTab:CreateButton({
+            Name = "Cave",
+            Callback = function()
+                local args = {[1] = "Teleport",[2] = 3}
+                game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+            end,
+            })
+
+            local Button = TpTab:CreateButton({
+                Name = "Ocean",
+                Callback = function()
+                    local args = {[1] = "Teleport",[2] = 4}
+                    game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+                end,
+                })
+
+                local Button = TpTab:CreateButton({
+                    Name = "Candy",
+                    Callback = function()
+                        local args = {[1] = "Teleport",[2] = 5}
+                        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+                    end,
+                    })
+
+                    local Button = TpTab:CreateButton({
+                        Name = "Snow",
+                        Callback = function()
+                            local args = {[1] = "Teleport",[2] = 6}
+                            game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(unpack(args))
+                        end,
+                        })
+
+
+game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
+
+local Toggle = MainTab:CreateToggle({
+    Name = "Auto Tap",
+    CurrentValue = false,
+    Flag = "Toggle3",
+    Callback = function(Value)
+        isRunning = Value -- Update the loop state based on the toggle value
+
+        if isRunning then
+            while isRunning do
+                game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
+                wait()
+            end
+        end
+    end,
+})
